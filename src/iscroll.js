@@ -11,6 +11,12 @@ var m = Math,
 			i = 0,
 			l = vendors.length;
 
+		// Mozilla's browser inside their new OS returns clean style attributes in dummyStyle, 
+		// even though it seems they're not supported. I added the following test for Mozilla's B2G (firefoxos).
+		if ('MozTransform' in dummyStyle) {
+			return 'Moz';
+		}
+
 		for ( ; i < l; i++ ) {
 			t = vendors[i] + 'ransform';
 			if ( t in dummyStyle ) {
